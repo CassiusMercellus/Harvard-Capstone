@@ -1,0 +1,37 @@
+<!-- In view_journal.html -->
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<h2>{{ journal.title }}</h2>
+<p>{{ journal.content }}</p>
+
+{% if journal.user == user %}
+    
+    <button onclick="openEditPopup('{{ journal.id }}', '{{ journal.title|escapejs }}', '{{ journal.content|escapejs }}')">Edit</button>
+
+    <form action="{% url 'journal:delete_journal' journal.id %}" method="POST" style="display:inline;">
+        {% csrf_token %}
+        <button type="submit">Delete</button>
+    </form>
+{% endif %}
+
+<!-- Edit Journal Popup -->
+<div id="editPopup" class="popup" style="display:none;">
+    <form id="editForm" method="POST" action="{% url 'journal:edit_journal' journal.id %}">
+        {% csrf_token %}
+        <input type="hidden" id="journalId" name="journal_id">
+        <label for="editTitle">Title:</label>
+        <input type="text" id="editTitle" name="title" required>
+        <label for="editContent">Content:</label>
+        <textarea id="editContent" name="content" rows="5" required></textarea>
+        <button type="submit">Save Changes</button>
+        <button type="button" onclick="closeEditPopup()">Cancel</button>
+    </form>
+</div>
+
+<a href="{% url 'journal:home' %}"><button>Back to Home</button></a>
+
+<script src="{% static 'js/script.js' %}"></script>
+
+{% endblock content %}

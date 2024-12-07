@@ -1,22 +1,34 @@
+import markdown
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponseForbidden, JsonResponse
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from .models import Journal
+from django.db.models import Q
 
 @login_required
 def home(request):
-    # Get the logged-in user
+
     user = request.user
 
-    # Query for user's journals and public journals by others
+    search_query = request.GET.get('search', '')
+
     user_journals = Journal.objects.filter(user=user)
     public_journals = Journal.objects.filter(is_public=True).exclude(user=user)
 
-    # Combine the queries
-    journals = user_journals.union(public_journals).order_by('-created_at')
+    if search_query:
+        user_journals = user_journals.filter(
+            Q(title__icontains=search_query) | Q(content__icontains=search_query)
+        )
+        public_journals = public_journals.filter(
+            Q(title__icontains=search_query) | Q(content__icontains=search_query)
+        )
 
-    return render(request, 'home.html', {'journals': journals})
+    journals = user_journals | public_journals  
+
+    journals = journals.order_by('-created_at')
+
+    return render(request, 'home.html', {'journals': journals, 'search_query': search_query})
 
 @login_required
 def create_journal(request):
@@ -73,12 +85,21 @@ def edit_journal(request, journal_id):
     return render(request, 'journal/edit_journal.html', {'journal': journal})
 
 @login_required
+
 def view_journal(request, journal_id):
-    # Get the journal entry or 404 if not found
+    # Fetch the journal entry
     journal = get_object_or_404(Journal, id=journal_id)
 
-    # Optionally, you can restrict access to only the user who created the journal or allow all users
+    # Check if the journal is private and belongs to the user
     if not journal.is_public and journal.user != request.user:
         return HttpResponseForbidden("You are not allowed to view this journal.")
 
-    return render(request, 'view_journal.html', {'journal': journal})
+    # Convert the Markdown content to HTML
+    md = markdown.Markdown()
+    journal_content_html = md.convert(journal.content)
+
+    # Render the page with the converted HTML content
+    return render(request, 'view_journal.html', {
+        'journal': journal,
+        'journal_content_html': journal_content_html
+    })

@@ -1,20 +1,32 @@
-<!-- In view_journal.html -->
 {% extends "base.html" %}
 {% load static %}
+
 {% block content %}
-
-<h2>{{ journal.title }}</h2>
-<p>{{ journal.content }}</p>
-
-{% if journal.user == user %}
+<div class="journal-container">
+    <!-- Title -->
+    <h2 class="journal-title">{{ journal.title }}</h2>
     
-    <button onclick="openEditPopup('{{ journal.id }}', '{{ journal.title|escapejs }}', '{{ journal.content|escapejs }}')">Edit</button>
+    <!-- Content (Rendered Markdown as HTML) -->
+    <div class="markdown-content">
+        {{ journal_content_html|safe }}
+    </div>
 
-    <form action="{% url 'journal:delete_journal' journal.id %}" method="POST" style="display:inline;">
-        {% csrf_token %}
-        <button type="submit">Delete</button>
-    </form>
-{% endif %}
+    <!-- Buttons -->
+    {% if journal.user == user %}
+        <div class="journal-buttons">
+            <button onclick="openEditPopup('{{ journal.id }}', '{{ journal.title|escapejs }}', '{{ journal.content|escapejs }}')" class="btn edit-btn">Edit</button>
+            <form action="{% url 'journal:delete_journal' journal.id %}" method="POST" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" class="btn logout-btn">Delete</button>
+            </form>
+        </div>
+    {% endif %}
+    
+    <!-- Back to Home Button -->
+    <div class="back-home">
+        <a href="{% url 'journal:home' %}"><button>Back to Home</button></a>
+    </div>
+</div>
 
 <!-- Edit Journal Popup -->
 <div id="editPopup" class="popup" style="display:none;">
@@ -29,8 +41,6 @@
         <button type="button" onclick="closeEditPopup()">Cancel</button>
     </form>
 </div>
-
-<a href="{% url 'journal:home' %}"><button>Back to Home</button></a>
 
 <script src="{% static 'js/script.js' %}"></script>
 

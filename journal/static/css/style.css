@@ -150,6 +150,8 @@
 
 /* Header styling */
 .header {
+    margin-top: 150px;
+    margin-bottom: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -165,16 +167,86 @@
 }
 
 /* Content styling */
-.content {
-    text-align: center;
-    margin: 20px auto;
-    max-width: 800px;
+.search-container {
+    width: 100%;
 }
 
-.content h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #007BFF;
+.search-container input {
+    width: calc(100% - 120px); /* Adjust width for search bar */
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    box-sizing: border-box; /* Ensure padding is included in width */
+}
+
+.search-container button {
+    width: 100px; /* Make the search button a fixed size */
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    background-color: var(--button-background-color);
+    color: var(--button-text-color);
+    cursor: pointer;
+}
+
+.search-container input:focus,
+.search-container button:focus {
+    outline: none;
+    border-color: var(--button-background-color);
+}
+
+/* Ensure header elements are centered in column mode on small screens */
+
+
+@media (max-width: 850px) {
+    .header {
+        margin-top: 350px;
+        flex-direction: column; /* Stack the elements vertically */
+        align-items: center; /* Center items horizontally */
+        justify-content: center; /* Center items vertically */
+        padding: 5px 10px; /* Adjust padding to avoid overflow */
+    }
+
+    .header .btn {
+        margin-left: 0; /* Remove left margin on small screens */
+        margin-top: 5px; /* Reduce margin between buttons */
+        width: 100%; /* Make buttons take full width */
+    }
+
+    .search-container {
+        width: 100%; /* Ensure search container takes full width */
+        margin-top: 0; /* Remove margin above the search container */
+        margin-bottom: 10px; /* Add bottom margin to separate it from other elements */
+    }
+
+    .search-container input {
+        width: 100%; /* Make input field take full width */
+        margin-bottom: 10px; /* Add space below the input field */
+        box-sizing: border-box; /* Ensure padding is included in width */
+    }
+
+    .search-container button {
+        width: 100%; /* Make the button take full width */
+        margin-top: 5px; /* Add space between input and button */
+        box-sizing: border-box; /* Ensure padding is included in width */
+    }
+
+    .logout-form {
+        width: 100%;
+    }
+
+    /* Adjust layout of buttons and ensure proper stacking */
+    .header .btn.create-btn,
+    .header .btn.logout-btn {
+        margin-top: 10px; /* Add space between buttons */
+        width: 100%; /* Ensure buttons are full width */
+    }
+}
+
+@media (max-width: 400px) {
+    .header {
+        margin-top: 550px;
+    }
 }
 
 /* Journal list styling */

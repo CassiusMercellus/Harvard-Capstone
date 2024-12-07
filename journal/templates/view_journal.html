@@ -3,15 +3,12 @@
 
 {% block content %}
 <div class="journal-container">
-    <!-- Title -->
     <h2 class="journal-title">{{ journal.title }}</h2>
     
-    <!-- Content (Rendered Markdown as HTML) -->
     <div class="markdown-content">
         {{ journal_content_html|safe }}
     </div>
 
-    <!-- Buttons -->
     {% if journal.user == user %}
         <div class="journal-buttons">
             <button onclick="openEditPopup('{{ journal.id }}', '{{ journal.title|escapejs }}', '{{ journal.content|escapejs }}')" class="btn edit-btn">Edit</button>
@@ -22,13 +19,11 @@
         </div>
     {% endif %}
     
-    <!-- Back to Home Button -->
     <div class="back-home">
         <a href="{% url 'journal:home' %}"><button>Back to Home</button></a>
     </div>
 </div>
 
-<!-- Edit Journal Popup -->
 <div id="editPopup" class="popup" style="display:none;">
     <form id="editForm" method="POST" action="{% url 'journal:edit_journal' journal.id %}">
         {% csrf_token %}

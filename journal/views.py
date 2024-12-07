@@ -43,7 +43,7 @@ def create_journal(request):
             user=request.user,
             is_public=is_public
         )
-        return redirect('journal:home')  # Ensure 'homepage' matches the name in your URL patterns.
+        return redirect('journal:home') 
     return render(request, 'create_journal.html')
 
 def authView(request):
@@ -87,18 +87,18 @@ def edit_journal(request, journal_id):
 @login_required
 
 def view_journal(request, journal_id):
-    # Fetch the journal entry
+
     journal = get_object_or_404(Journal, id=journal_id)
 
-    # Check if the journal is private and belongs to the user
+   
     if not journal.is_public and journal.user != request.user:
         return HttpResponseForbidden("You are not allowed to view this journal.")
 
-    # Convert the Markdown content to HTML
+
     md = markdown.Markdown()
     journal_content_html = md.convert(journal.content)
 
-    # Render the page with the converted HTML content
+
     return render(request, 'view_journal.html', {
         'journal': journal,
         'journal_content_html': journal_content_html

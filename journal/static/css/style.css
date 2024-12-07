@@ -148,7 +148,7 @@
     flex-direction: column;
 }
 
-/* Header styling */
+
 .header {
     margin-top: 150px;
     margin-bottom: 50px;
@@ -166,21 +166,21 @@
     margin-left: 10px;
 }
 
-/* Content styling */
+
 .search-container {
     width: 100%;
 }
 
 .search-container input {
-    width: calc(100% - 120px); /* Adjust width for search bar */
+    width: calc(100% - 120px); 
     padding: 10px;
     font-size: 14px;
     border-radius: 5px;
-    box-sizing: border-box; /* Ensure padding is included in width */
+    box-sizing: border-box;
 }
 
 .search-container button {
-    width: 100px; /* Make the search button a fixed size */
+    width: 100px; 
     padding: 10px;
     font-size: 14px;
     border-radius: 5px;
@@ -195,51 +195,48 @@
     border-color: var(--button-background-color);
 }
 
-/* Ensure header elements are centered in column mode on small screens */
-
 
 @media (max-width: 850px) {
     .header {
         margin-top: 350px;
-        flex-direction: column; /* Stack the elements vertically */
-        align-items: center; /* Center items horizontally */
-        justify-content: center; /* Center items vertically */
-        padding: 5px 10px; /* Adjust padding to avoid overflow */
+        flex-direction: column;
+        align-items: center; 
+        justify-content: center; 
+        padding: 5px 10px; 
     }
 
     .header .btn {
-        margin-left: 0; /* Remove left margin on small screens */
-        margin-top: 5px; /* Reduce margin between buttons */
-        width: 100%; /* Make buttons take full width */
+        margin-left: 0; 
+        margin-top: 5px; 
+        width: 100%; 
     }
 
     .search-container {
-        width: 100%; /* Ensure search container takes full width */
-        margin-top: 0; /* Remove margin above the search container */
-        margin-bottom: 10px; /* Add bottom margin to separate it from other elements */
+        width: 100%; 
+        margin-top: 0; 
+        margin-bottom: 10px; 
     }
 
     .search-container input {
-        width: 100%; /* Make input field take full width */
-        margin-bottom: 10px; /* Add space below the input field */
-        box-sizing: border-box; /* Ensure padding is included in width */
+        width: 100%; 
+        margin-bottom: 10px; 
+        box-sizing: border-box; 
     }
 
     .search-container button {
-        width: 100%; /* Make the button take full width */
-        margin-top: 5px; /* Add space between input and button */
-        box-sizing: border-box; /* Ensure padding is included in width */
+        width: 100%; 
+        margin-top: 5px; 
+        box-sizing: border-box; 
     }
 
     .logout-form {
         width: 100%;
     }
 
-    /* Adjust layout of buttons and ensure proper stacking */
     .header .btn.create-btn,
     .header .btn.logout-btn {
-        margin-top: 10px; /* Add space between buttons */
-        width: 100%; /* Ensure buttons are full width */
+        margin-top: 10px;
+        width: 100%; 
     }
 }
 
@@ -249,7 +246,6 @@
     }
 }
 
-/* Journal list styling */
 .journal-list {
     list-style: none;
     padding: 0;
@@ -287,7 +283,6 @@
     color: #888;
 }
 
-/* Button styling */
 .btn {
     padding: 10px 20px;
     font-size: 16px;
@@ -325,7 +320,6 @@
     flex-direction: column;
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
     .header {
         flex-direction: column;
@@ -346,7 +340,7 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    height: 90vh; /* Adjusts to fill most of the viewport */
+    height: 90vh;
     padding: 20px;
     text-align: center;
 }
@@ -358,7 +352,7 @@
 }
 
 .journal-content {
-    flex-grow: 1; /* Centers the content vertically */
+    flex-grow: 1; 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -420,7 +414,6 @@
     background-color: #45a049;
 }
 
-/* Journal Form Styling */
 .form-wrap {
     background-color: var(--card-background-color);
     padding: 40px;
@@ -455,23 +448,20 @@
     transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-/* Dark mode input and textarea adjustments */
 .dark-mode .form-wrap form input,
 .dark-mode .form-wrap form textarea {
-    background-color: #333; /* Dark background */
-    color: var(--button-text-color); /* White text */
-    border: 1px solid #444; /* Darker border */
+    background-color: #333;
+    color: var(--button-text-color);
+    border: 1px solid #444;
 }
 
-/* Focus styles for dark mode */
 .dark-mode .form-wrap form input:focus,
 .dark-mode .form-wrap form textarea:focus {
     outline: none;
     border-color: var(--button-background-color);
-    background-color: #555; /* Slightly lighter background on focus */
+    background-color: #555; 
 }
 
-/* Ensure the button in dark mode has proper contrast */
 .dark-mode .form-wrap button {
     background-color: var(--button-background-color);
     color: var(--button-text-color);
@@ -498,7 +488,6 @@
     background-color: #45a049;
 }
 
-/* Additional styles to improve the appearance of the form */
 .form-wrap .error-message {
     color: red;
     font-size: 14px;
@@ -506,23 +495,21 @@
 }
 
 
-/* Ensure each new paragraph and block element starts on a new line */
 .markdown-content p {
-    display: block; /* Ensure paragraphs are block elements */
+    display: block; 
     margin-bottom: 15px;
     font-size: 1rem;
     line-height: 1.6;
     color: var(--text-color);
 }
 
-/* Block elements (like headings) should be separated by a margin */
 .markdown-content h1,
 .markdown-content h2,
 .markdown-content h3,
 .markdown-content h4,
 .markdown-content h5,
 .markdown-content h6 {
-    display: block; /* Ensure headers are block elements */
+    display: block; 
     margin-bottom: 15px;
     font-size: 1.5rem;
     font-weight: bold;
@@ -530,26 +517,23 @@
     line-height: 1.4;
 }
 
-/* Allow empty lines between blocks, add margin and padding */
 .markdown-content br {
-    line-height: 1.5; /* Adjust line height for <br> tags */
-    content: "\A"; /* Forces a line break when needed */
+    line-height: 1.5; 
+    content: "\A"; 
 }
 
-/* Handle cases where there are multiple inline elements that need spacing */
 .markdown-content {
-    white-space: pre-wrap; /* Preserve whitespace and line breaks */
-    word-wrap: break-word; /* Allow long words to break onto the next line */
+    white-space: pre-wrap;
+    word-wrap: break-word;
 }
 
-/* Additional cleanup for inline elements like bold, italic, and links */
 .markdown-content strong,
 .markdown-content em,
 .markdown-content a {
-    display: inline-block; /* Make inline elements block-level */
+    display: inline-block; 
 }
 
-/* Blockquote adjustments */
+
 .markdown-content blockquote {
     font-style: italic;
     border-left: 5px solid var(--card-border-color);
@@ -559,7 +543,7 @@
     color: var(--text-color);
 }
 
-/* Code block adjustments */
+
 .markdown-content code {
     background-color: #f4f4f4;
     padding: 2px 5px;
@@ -576,7 +560,7 @@
 }
 
 
-/* New class for the "Make Public" checkbox */
+
 .checkbox-group {
     display: flex;
     flex-direction: column;
@@ -596,20 +580,17 @@
     cursor: pointer;
 }
 
-/* Dark mode adjustments */
 .dark-mode .checkbox-group input[type="checkbox"] {
     background-color: #333;
     border: 1px solid var(--card-border-color);
 }
 
-/* Checkbox focus state */
 .checkbox-group input[type="checkbox"]:focus {
     outline: none;
     border-color: var(--button-background-color);
     background-color: #f4f4f4;
 }
 
-/* Optional: Adjusting the position of the checkbox */
 .checkbox-group input[type="checkbox"] {
     align-self: flex-start;
 }

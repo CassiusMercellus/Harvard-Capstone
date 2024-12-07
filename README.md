@@ -1,7 +1,7 @@
 # Journal App
 
 ## Distinctiveness and Complexity
-The **Journal** web application is designed to provide a secure and interactive platform for users to document their thoughts and experiences through journaling. A key feature of the app is the flexibility to keep journal entries private or share them with others, giving users full control over their content. This allows for a personalized journaling experience, where users can choose how they want to engage with their entries. Unlike typical social media or e-commerce platforms, this app focuses on primarily privacy, offering a thoughtful and customizable way for users to record their thoughts.
+The **Journal** web application is designed to provide a secure and interactive platform for users to document their thoughts and experiences through journaling. A key feature of the app is the flexibility to keep journal entries private or share them with others, giving users full control over their content. This allows for a personalized journaling experience, where users can choose how they want to engage with their entries. Unlike the social media or e-commerce platforms, this app focuses on journaling and the core feature of being able to make entries public or private.
 
 Initially the project was created with simply the journal entry functionality. Essentially the only notable feature was being able to set your entry as public or private. After pondering for a bit I was able to come up with more features to implement into the project such as a search bar for various entry titles, markdown functionality for more stylish journal entries from users alongside a dark mode button to toggle on and off darkmode for users who want that experience.
 

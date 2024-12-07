@@ -574,3 +574,42 @@
     font-family: monospace;
     overflow-x: auto;
 }
+
+
+/* New class for the "Make Public" checkbox */
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: var(--text-color);
+}
+
+.checkbox-group label {
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: auto;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+/* Dark mode adjustments */
+.dark-mode .checkbox-group input[type="checkbox"] {
+    background-color: #333;
+    border: 1px solid var(--card-border-color);
+}
+
+/* Checkbox focus state */
+.checkbox-group input[type="checkbox"]:focus {
+    outline: none;
+    border-color: var(--button-background-color);
+    background-color: #f4f4f4;
+}
+
+/* Optional: Adjusting the position of the checkbox */
+.checkbox-group input[type="checkbox"] {
+    align-self: flex-start;
+}

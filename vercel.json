@@ -1,0 +1,13 @@
+{
+    "builds": [
+      { "src": "manage.py", "use": "@vercel/python" },
+      { "src": "**/*.py", "use": "@vercel/python" }
+    ],
+    "routes": [
+      { 
+        "src": "/(.*)", 
+        "dest": "journalcapstone.asgi:application" 
+        }
+    ]
+  }
+  

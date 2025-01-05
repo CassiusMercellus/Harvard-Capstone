@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+
+<div class="container">
+    <div class="header">
+
+        <div class="search-container">
+            <form method="GET" action="{% url 'journal:home' %}">
+                <input type="text" name="search" placeholder="Search journal entries" value="{{ search_query }}">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+        
+        <button class="btn create-btn" onclick="location.href='{% url 'journal:create_journal' %}'">
+            Create
+        </button>
+        <form action="{% url 'journal:logout' %}" method="POST" class="logout-form">
+            {% csrf_token %}
+            <button type="submit" class="btn logout-btn">Logout</button>
+        </form>
+        <button class="btn" id="themeToggle"><span id="themeIcon">🌞</span></button>
+    </div>
+
+    <div class="content">
+        <h2>Your Journal Entries and Public Entries</h2>
+        
+        {% if journals %}
+            <ul class="journal-list">
+                {% for journal in journals %}
+                    <li class="journal-entry">
+                        <h3 class="journal-title">
+                            <a href="{% url 'journal:view_journal' journal.id %}">
+                                {{ journal.title }}
+                            </a>
+                        </h3>
+                        <p class="journal-content">{{ journal.content|truncatewords:20 }}</p>
+                        <small class="journal-author">By: {{ journal.user.username }}</small>
+                        {% if journal.user == user %}
+                            <form action="{% url 'journal:delete_journal' journal.id %}" method="POST" class="delete-form">
+                                {% csrf_token %}
+                                <button type="submit" class="btn delete-btn">Delete</button>
+                            </form>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No journal entries found for this search.</p>
+        {% endif %}
+    </div>
+</div>
+
+<script src="{% static 'js/script.js' %}"></script>
+{% endblock content %}
